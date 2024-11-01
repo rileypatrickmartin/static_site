@@ -42,7 +42,29 @@ class TestParentNode(unittest.TestCase):
 
     # Test all the edge cases you can think of, 
     # including nesting ParentNode objects inside of one another, 
-    # multiple children, and no children.         
+    # multiple children, and no children. 
+    def test_to_html_2(self):
+        node = ParentNode(
+                    "p",
+                    [
+                        ParentNode(
+                                    "p",
+                                    [
+                                        LeafNode("b", "Bold text"),
+                                        LeafNode(None, "Normal text"),
+                                        LeafNode("i", "italic text"),
+                                        LeafNode(None, "Normal text"),
+                                    ],
+                                ),
+                        LeafNode("b", "Bold text"),
+                        LeafNode(None, "Normal text"),
+                        LeafNode("i", "italic text"),
+                        LeafNode(None, "Normal text"),
+                    ],
+                )
+
+        html = "<p><p><b>Bold text</b>Normal text<i>italic text</i>Normal text</p><b>Bold text</b>Normal text<i>italic text</i>Normal text</p>"
+        self.assertEqual(node.to_html(), html)        
         
 
 if __name__ == "__main__":
