@@ -1,13 +1,15 @@
 from textnode import TextType, TextNode
 from htmlnode import HTMLNode
 from leafnode import LeafNode
+from typing import List
+import logging, sys
 
 def main():
     a_textnode = TextNode("test", TextType.NORMAL, "www.google.com")
     print(a_textnode)
 
 def text_node_to_html_node(text_node)->LeafNode:
-    if text_node.text_type == 'normal':
+    if text_node.text_type == 'text':
         return LeafNode(None, text_node.text)
 
     if text_node.text_type == 'bold':

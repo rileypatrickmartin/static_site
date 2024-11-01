@@ -6,10 +6,10 @@ from main import text_node_to_html_node
 from unittest.mock import Mock
 
 
-class TestParentNode(unittest.TestCase):
+class TestTextNodeToHTMLNode(unittest.TestCase):
 
     def test_text_node_to_html_node_normal(self):
-        text_node = TextNode("Text", TextType.NORMAL)
+        text_node = TextNode("Text", TextType.TEXT)
         leaf_node = LeafNode(None, "Text")
         self.assertEqual(text_node_to_html_node(text_node), leaf_node)
 
