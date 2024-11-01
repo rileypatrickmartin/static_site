@@ -8,24 +8,24 @@ def main():
 
 def text_node_to_html_node(text_node)->LeafNode:
     if text_node.text_type == 'normal':
-        return LeafNode(None, text_node.value)
+        return LeafNode(None, text_node.text)
 
     if text_node.text_type == 'bold':
-        return LeafNode("b", text_node.value)
+        return LeafNode("b", text_node.text)
 
     if text_node.text_type == 'italic':
-        return LeafNode("i", text_node.value)
+        return LeafNode("i", text_node.text)
 
     if text_node.text_type == 'code':
-        return LeafNode("code", text_node.value)
+        return LeafNode("code", text_node.text)
   
     if text_node.text_type == 'link':
-        return LeafNode("a", text_node.value, props={'href':text_node.url})
+        return LeafNode("a", text_node.text, props={'href':text_node.url})
 
     if text_node.text_type == 'images':
-        return LeafNode("img", "", props={'alt':text_node.value,'src':text_node.url})
+        return LeafNode("img", "", props={'alt':text_node.text,'src':text_node.url})
 
-    raise Exception("Text type of text node not in TextType Enum!")
+    raise ValueError("Text type of text node not in TextType Enum!")
 
 if __name__ == '__main__':
     main()
